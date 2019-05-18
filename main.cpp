@@ -1,3 +1,12 @@
+/*
+CPSC 350-02
+Assignment 6
+
+Christian Valencia
+2275944
+valen193@mail.chapman.edu
+*/
+
 #include <iostream>
 #include <ctime>
 #include <algorithm>
@@ -7,19 +16,25 @@
 
 using namespace std;
 
+//Functions
+
+//Takes in a filepath and reports the run times of 4 sorting algoritms
 void analyze(string filepath);
+//simple brute force clone to 4 other arrays
 void copyArrays(double * master, double * cloneA,
     double * cloneB, double * cloneC, double * cloneD, int size);
 
+//Sorting algorithms
 void bubbleSort(double array[], int length);
 void insertionSort(double array[], int length);
 void quickSort(double array[], int lo, int hi);
-int partition(double array[], int lo, int hi);
+    //sub method of quicksort for recursive partitioning and swapping
+    int partition(double array[], int lo, int hi);
 void shellSort(double array[], int length);
 
 int main(int argc, char const *argv[])
 {
-    bool debug = true;
+    bool debug = false;
     if(debug)
     {
         analyze("input.txt");
@@ -53,16 +68,17 @@ int main(int argc, char const *argv[])
 void analyze(string filepath)
 {
     int length;
+    //Used to store the start and stop times.
     clock_t time;
 
     cout << "Creating fileIO" << endl << endl;
     fileIO in = fileIO(filepath);
 
-
     cout << "Reading from file..." << endl << endl;
     double * master = in.getArray();
     length = in.length;
 
+    //make 4 new arrays for copying into
     double * copyOne = new double[length];
     double * copyTwo = new double[length];
     double * copyThree = new double[length];
@@ -103,10 +119,6 @@ void analyze(string filepath)
     cout << "   Process completed in " << (double)time/CLOCKS_PER_SEC << " seconds" << endl << endl;
 
     cout << "Testing complete. Thank you." << endl << endl;
-
-    //cout << "Deleting dynamically allocated copies..." << endl << endl;
-
-    //delete [] copyOne;
 
     cout << "Done" << endl << endl;
 }
@@ -200,7 +212,7 @@ void shellSort(double array[], int length)
         {
             int temp = array[i];
             int j;
-            for(j=i; j>=gap && array[j-gap] > temp; j -=gap)
+            for(j = i; j >= gap && array[j-gap] > temp; j -=gap)
             {
                 array[j] = array[j - gap];
             }

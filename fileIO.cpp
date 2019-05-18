@@ -31,6 +31,7 @@ double* fileIO::getArray()
         getline(file,line);
 
         length = stoi(line);
+        cout << "Sample size:" << endl;
         cout << length << endl;
 
         //Declare new array for double
