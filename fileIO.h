@@ -7,6 +7,7 @@ using namespace std;
 
 class fileIO
 {
+    //A class for parsing a text file containing a list of numbers into an array
     public:
         // Default constructor
         fileIO();
@@ -15,7 +16,7 @@ class fileIO
         // Desctructor
         ~fileIO();
 
-        // Method to turn input into a queue
+        // Method returns an array generated from the file given
         double* getArray();
 
         string filepath;

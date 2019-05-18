@@ -91,6 +91,7 @@ void analyze(string filepath)
 
     cout << "Bubble Sort" << endl;
     cout << "   Start" << endl;
+    cout << "   Working..." << endl;
     time = clock();
     bubbleSort(copyOne, length);
     time = clock() - time;
@@ -98,6 +99,7 @@ void analyze(string filepath)
 
     cout << "Insertion Sort" << endl;
     cout << "   Start" << endl;
+    cout << "   Working..." << endl;
     time = clock();
     insertionSort(copyTwo, length);
     time = clock() - time;
@@ -113,6 +115,7 @@ void analyze(string filepath)
 
     cout << "Shell Sort" << endl;
     cout << "   Start" << endl;
+    cout << "   Working..." << endl;
     time = clock();
     shellSort(copyFour, length);
     time = clock() - time;
@@ -120,7 +123,7 @@ void analyze(string filepath)
 
     cout << "Testing complete. Thank you." << endl << endl;
 
-    cout << "Done" << endl << endl;
+    cout << "Done" << endl;
 }
 
 void copyArrays(double * master, double * cloneA,
@@ -137,7 +140,6 @@ void copyArrays(double * master, double * cloneA,
 
 void bubbleSort(double array[], int length)
 {
-    cout << "   Working..." << endl;
     for(int i = 0; i<length; ++i)
     {
         int temp = 0;
@@ -155,7 +157,6 @@ void bubbleSort(double array[], int length)
 
 void insertionSort(double array[], int length)
 {
-    cout << "   Working..." << endl;
     for(int j = 1; j < length; ++j)
     {
         double temp = array[j];
@@ -205,7 +206,6 @@ int partition(double array[], int lo, int hi)
 
 void shellSort(double array[], int length)
 {
-    cout << "   Working..." << endl;
     for (int gap = length/2; gap > 0; gap /= 2)
     {
         for(int i = gap; i < length; i += 1)
