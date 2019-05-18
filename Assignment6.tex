@@ -1,0 +1,101 @@
+\documentclass[journal]{IEEEtran}
+
+\ifCLASSINFOpdf
+\else
+\fi
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\usepackage{hyperref}
+
+
+\begin{document}
+
+\title{Assignment 6: Sorting Algorithms}
+\author{Christian Valencia
+\thanks{}% <-this % stops a space
+\thanks{}% <-this % stops a space
+\thanks{}}
+
+\markboth{17 May~2019}%
+{Shell \MakeLowercase{\textit{}}: Assignment 6: Sorting}
+
+\maketitle
+
+\begin{abstract}
+This paper exists to demonstrate an empirical analysis of multiple different sorting algorithms and compare the results against formal analyses using asymptotic "Big O" notation.
+\end{abstract}
+
+\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+
+\IEEEPARstart{M}{y} Data Structures professor once said that when it comes to data structures, there is no "silver bullet" solution. Certainly the same applies to sorting algorithms but you can get pretty darn close. This paper analyzes four sorting algorithms (Bubble Sort, Insertion Sort, Quick Sort, and Shell Sort) in an both an empirical and formal setting.
+
+\section{Time Differences}
+Based on a formal, mathematical analysis, run-times for each algorithm would be:
+\begin{itemize}
+    \item Bubble Sort: $O(n^2)$
+    \item Insertion Sort: \textit{Worst case is }$O(n^2)$\textit{, best case is }$O(n)$
+    \item Quick Sort: \textit{Worst case is }$O(n^2)$\textit{, best case is }$O(n logn)$
+    \item Shell Sort: \textit{Worst case is }$O(n^2)$\textit{, best case is }$O(n logn)$
+
+\end{itemize}\\ \par
+This shows that Bubble Sort is the least efficient while Quick and Shell have potential for very efficient sorting. Insertion, while it is able to skip certain iterations when partially sorted, still has a best case of linear time. These analyses turn out to fairly reflect the results recorded when each were given the same set of 100,000 unsorted integers:
+\begin{itemize}
+    \item Bubble Sort: \textit{20 seconds}
+    \item Insertion Sort: \textit{7 seconds}
+    \item Quick Sort: \textit{0.01 second}
+    \item Shell Sort: \textit{0.03 second}
+\end{itemize}\\ \par
+As expected, Bubble Sort took the longest at a halting 20 seconds average. Insertion does better, coming in at under half the time Bubble sort took meaning it was running under optimal conditions. Quick sort blows away the competition, running orders of magnitude faster than Bubble, this is because of its recursive call and logarithmic partitioning of the array. Shell comes in second place with a time that is nothing to sneeze at.\par
+\\I was surprised by how well Shell Sort worked, it is a variation on Insertion sort and while the "Big O" of it was $O(n logn)$, the difference didn't seem so drastic.
+\\
+\\
+\\
+\\
+\\
+\\
+
+\section{Tradeoffs of Each Algorithm}
+\textit{Table I} is a new god for the age of man which has come to an end:
+\begin{table}[h!]
+  \begin{center}
+    \caption{Algorithms Tradeoffs.}
+    \label{tab:table1}
+    \begin{tabular}{l|l|l} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+      \textbf{Algorithm} & \textbf{Pros} & \textbf{Cons} \\
+      \hline
+      Bubble & Easy to implement & Inefficient\\
+      Insertion & Has potential for presorted data & Inefficient\\
+      Quick & Fast and efficient & Complex\\
+      Shell & Simple and fast & Potentially $O(n^2)$ \\
+    \end{tabular}
+  \end{center}
+\end{table} % table of algorithm information
+
+\section{Impact of Programming Language}
+The code for this experiment was written in \texttt{C++}, which is a compiled language. This allows the compiler to re-factor and optimize the code for more efficient run-times. It creates a good balance between code that isn't too complex and efficiency. This is in contrast to an interpreted language like \texttt{Python} which might be simpler to implement but create unexpected differences in the results and execution. This though is one of a few shortcomings of Empirical Analysis...
+
+\section{Shortcomings of Empirical Analysis}
+Empirical Analysis, while it returns very accurate results, it can be very costly especially with the most precious resource: time. We were lucky this time to have the whole process take less than a minute but you can imagine how, when scaled up, testing inefficient algorithms can take much longer. Heck when it comes to modern computing waiting 20 seconds for a process feels like an eternity. On industrial scales this is not just annoying but costly. The asymptotic analysis could get a ballpark number in much less time. Empirical analysis also can vary wildly depending on too many external factors. For example, I ran the exact same code on my laptop when it was not charging and in low power mode and Bubble Sort took more than twice as long to finish. Even my normal tests were probably skewed by running Google Chrome in the background.
+
+
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+    
+
+\begin{thebibliography}{1}
+\bibitem{IEEEhowto:kopka}
+    \url{https://en.wikipedia.org/wiki/Shellsort} \par
+\bibitem{IEEEhowto:kopka}
+    \url{https://www.geeksforgeeks.org/bubble-sort/} \par
+\bibitem{IEEEhowto:kopka}
+    \url{https://en.wikipedia.org/wiki/Quicksort} \par
+\bibitem{IEEEhowto:kopka}
+    \url{https://www.geeksforgeeks.org/insertion-sort/} \par
+
+\end{thebibliography}
+
+\end{document}
